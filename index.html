@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GadgetGrid – Product Picks</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">⚡ GadgetGrid</div>
+      <p class="tagline">Curated picks. One click away.</p>
+    </div>
+  </header>
+
+  <!-- Controls -->
+  <div class="controls-bar">
+    <div class="controls-inner">
+      <input type="text" id="searchInput" class="search-box" placeholder="🔍  Search products…" />
+      <div class="filter-group">
+        <select id="categoryFilter" class="filter-select">
+          <option value="all">All Categories</option>
+        </select>
+        <select id="storeFilter" class="filter-select">
+          <option value="all">All Stores</option>
+          <option value="Amazon">Amazon</option>
+          <option value="Flipkart">Flipkart</option>
+        </select>
+      </div>
+      <button class="btn-add" id="openModalBtn" style="display:none;">+ Add Product</button>
+      <button class="btn-admin" id="adminLoginBtn">🔒 Admin</button>
+      <button class="btn-logout" id="adminLogoutBtn" style="display:none;">🔓 Logout</button>
+    </div>
+  </div>
+
+  <!-- Grid -->
+  <main class="grid-section">
+    <div class="product-grid" id="productGrid"></div>
+    <p class="empty-state" id="emptyState" style="display:none;">No products found. Add one above!</p>
+  </main>
+
+  <!-- Add / Edit Modal -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="modalTitle">Add Product</h2>
+        <button class="modal-close" id="closeModalBtn">✕</button>
+      </div>
+
+      <div class="form-group">
+        <label>Product Name *</label>
+        <input type="text" id="prodName" placeholder="e.g. G-Shock Watch" />
+      </div>
+      <div class="form-group">
+        <label>Category</label>
+        <input type="text" id="prodCategory" placeholder="e.g. Watches, Gadgets…" list="catSuggestions"/>
+        <datalist id="catSuggestions"></datalist>
+      </div>
+      <div class="form-group">
+        <label>Image URL *</label>
+        <input type="url" id="prodImage" placeholder="https://…/image.jpg" />
+      </div>
+      <div class="form-group">
+        <label>Product Link *</label>
+        <input type="url" id="prodLink" placeholder="https://amazon.in/… or flipkart.com/…" />
+      </div>
+      <div class="form-group">
+        <label>Store</label>
+        <select id="prodStore">
+          <option value="Amazon">Amazon</option>
+          <option value="Flipkart">Flipkart</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Price (optional)</label>
+        <input type="text" id="prodPrice" placeholder="₹1,999" />
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn-cancel" id="cancelModalBtn">Cancel</button>
+        <button class="btn-save" id="saveProductBtn">Save Product</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Login Modal -->
+  <div class="modal-overlay" id="loginOverlay">
+    <div class="modal login-modal">
+      <div class="modal-header">
+        <h2>🔐 Admin Login</h2>
+        <button class="modal-close" id="closeLoginBtn">✕</button>
+      </div>
+      <p class="login-hint">Enter your admin password to manage products.</p>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="adminPassword" placeholder="Enter password…" />
+      </div>
+      <p class="login-error" id="loginError"></p>
+      <div class="modal-actions">
+        <button class="btn-cancel" id="cancelLoginBtn">Cancel</button>
+        <button class="btn-save" id="submitLoginBtn">Login</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
